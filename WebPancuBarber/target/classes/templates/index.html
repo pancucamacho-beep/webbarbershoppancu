@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pancu Barber | Neo-Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0d0216; color: #fff; font-family: 'Orbitron'; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .portada img { width: 100%; max-width: 800px; border-radius: 15px; border: 2px solid #bc13fe; box-shadow: 0 0 20px #bc13fe; }
+        .main-content { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%; max-width: 1000px; margin-top: 20px; }
+        .box { background: rgba(20, 0, 40, 0.9); padding: 25px; border: 2px solid #bc13fe; border-radius: 20px; flex: 1 1 320px; }
+        .item { display: flex; justify-content: space-between; margin: 15px 0; border-bottom: 1px solid #330066; padding-bottom: 5px; }
+        input, select { width: 100%; padding: 12px; margin: 8px 0; background: #1a0033; border: 1px solid #bc13fe; color: #fff; border-radius: 5px; font-family: 'Orbitron'; }
+        .neon-btn { width: 100%; padding: 15px; background: transparent; color: #bc13fe; border: 2px solid #bc13fe; cursor: pointer; font-family: 'Orbitron'; font-weight: bold; }
+        .neon-btn:hover { background: #bc13fe; color: #000; box-shadow: 0 0 30px #bc13fe; }
+        .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-top: 15px; }
+        .galeria img { width: 100%; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #bc13fe; }
+    </style>
+</head>
+<body>
+    <div class="portada">
+        <img th:src="@{/img/portada.JPG}" alt="Pancu Barber">
+        <h1 style="text-align:center; text-shadow: 0 0 10px #bc13fe;">PANCU BARBER</h1>
+    </div>
+    <div class="main-content">
+        <div class="box">
+            <h2>SERVICIOS</h2>
+            <div class="item"><span>Corte y Barba</span><span>₡5000</span></div>
+            <div class="item"><span>Corte y Cejas</span><span>₡4000</span></div>
+            <div class="item"><span>Marcado</span><span>₡2000</span></div>
+            <div class="item"><span>Barba</span><span>₡2000</span></div>
+            <div class="item"><span>Cejas</span><span>₡1000</span></div>
+            <div class="galeria">
+                <img th:src="@{/img/corte1.jpg}"><img th:src="@{/img/corte2.jpg}"><img th:src="@{/img/corte3.jpg}"><img th:src="@{/img/corte4.jpg}"><img th:src="@{/img/corte5.jpg}">
+            </div>
+        </div>
+        <div class="box">
+            <h2>RESERVAR</h2>
+            <form th:action="@{/agendar}" th:object="${cita}" method="post">
+                <input type="text" th:field="*{nombre}" placeholder="TU NOMBRE" required>
+                <input type="text" th:field="*{telefono}" placeholder="WHATSAPP" required>
+                <select th:field="*{servicio}" required>
+                    <option value="" disabled selected>TIPO DE CORTE</option>
+                    <option value="Corte y Barba">Corte y Barba (₡5000)</option>
+                    <option value="Corte y Cejas">Corte y Cejas (₡4000)</option>
+                    <option value="Marcado">Marcado (₡2000)</option>
+                    <option value="Barba">Barba (₡2000)</option>
+                    <option value="Cejas">Cejas (₡1000)</option>
+                </select>
+                <input type="date" th:field="*{fecha}" required>
+                <input type="time" th:field="*{hora}" required>
+                <button type="submit" class="neon-btn">AGENDAR AHORA</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

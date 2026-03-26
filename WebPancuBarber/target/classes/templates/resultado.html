@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmado | Pancu Barber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0d0216; color: #fff; font-family: 'Orbitron'; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: rgba(20, 0, 40, 0.95); padding: 40px; border: 2px solid #bc13fe; border-radius: 20px; text-align: center; width: 380px; box-shadow: 0 0 20px #bc13fe; }
+        .progress-bar { background: #2a004d; height: 15px; border-radius: 10px; margin: 20px 0; border: 1px solid #bc13fe; overflow: hidden; }
+        .fill { background: #bc13fe; height: 100%; transition: width 0.5s; }
+        .neon-btn { width: 100%; padding: 15px; background: transparent; color: #bc13fe; border: 2px solid #bc13fe; text-decoration: none; display: block; font-weight: bold; margin-top: 20px; }
+        .neon-btn:hover { background: #bc13fe; color: #000; box-shadow: 0 0 30px #bc13fe; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 th:text="${esGratis} ? '🔥 ¡CORTE GRATIS! 🔥' : '¡CITA REGISTRADA!'"></h2>
+        <div class="progress-bar">
+            <div class="fill" th:style="'width:' + (${cortes} % 4 == 0 ? 100 : (${cortes} % 4) * 25) + '%'"></div>
+        </div>
+        <p th:text="${premio}"></p>
+        <a th:href="${linkWa}" class="neon-btn" target="_blank">CONFIRMAR POR WHATSAPP</a>
+        <div style="margin-top:20px;">
+            <a href="https://www.instagram.com/pancu_barber_78" target="_blank" style="color:#bc13fe; text-decoration:none; margin: 0 10px;">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@pancu_barber" target="_blank" style="color:#bc13fe; text-decoration:none; margin: 0 10px;">TIKTOK</a>
+        </div>
+    </div>
+</body>
+</html>
